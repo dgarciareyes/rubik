@@ -38,21 +38,21 @@
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table class="table table-striped" id="datatable">
+                                <table class="table table-striped table-bordered nowwrap" style="width:100%" id="datatable-permission">
                                     <thead>
                                         <tr>
-                                            <th class="text-center">
+                                            <th class="text-center" style="width: 15px">
                                                 No.
                                             </th>
-                                            <th>Nama</th>
-                                            <th>Aksi</th>
+                                            <th>Nombre</th>
+                                            <th class="text-right" style="width: 75px">Acciones</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @php
                                             $no = 1
                                         @endphp
-                                        
+
                                         @foreach ($permissions as $permission)
                                         <tr>
                                             <td class="text-center">{{ $no++ }}</td>
@@ -90,15 +90,15 @@
                     @csrf
                     <div class="modal-body">
                         <div class="form-group">
-                            <label>Nama</label>
+                            <label>Nombre</label>
                             <input id="nama" name="nama" type="text" class="form-control" onkeydown="return alphaOnly(event);" aria-describedby="nama-permission">
                             <small id="nama-permission" class="form-text text-muted">
-                                Pisahkan dengan tanda minus (-)
+                                Separar con un signo menos (-)
                             </small>
                         </div>
                     </div>
                     <div class="modal-footer bg-whitesmoke br">
-                        <button type="submit" class="btn btn-icon icon-left btn-primary"><i class="fas fa-save"></i> Simpan</button>
+                        <button type="submit" class="btn btn-icon icon-left btn-primary"><i class="fas fa-save"></i> Guardar</button>
                     </div>
                 </form>
             </div>
@@ -118,11 +118,11 @@
                     @method('delete')
                     @csrf
                     <div class="modal-body">
-                        <p>Apakah Anda yakin akan menghapus data ini?</p>
+                        <p>¿Está seguro de que desea eliminar estos datos??</p>
                     </div>
                     <div class="modal-footer bg-whitesmoke br">
-                        <button type="submit" class="btn btn-danger btn-shadow">Ya</button>
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                        <button type="submit" class="btn btn-danger btn-shadow">Si</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                     </div>
                 </form>
             </div>
@@ -141,20 +141,20 @@
     <script src="{{ asset('assets/js/page/modules-datatables.js') }}"></script>
     <script>
         $('.create-permission').click(function(){
-            $('.modal-title').html('Tambah Data Permission');
+            $('.modal-title').html('Agregar Permisos');
             $('#edit').remove();
             $('.modal-content form').attr('action', '{{ url('/permissions/') }}');
             $('#nama').val('');
         });
 
-        $('#datatable').on('click', '.edit-permission',function(){
+        $('#datatable-permission').on('click', '.edit-permission',function(){
             let id = $(this).data('id');
 
-            $('.modal-title').html('Ubah Data Permission');  
+            $('.modal-title').html('Editar Permisos');
             $('#edit').remove();
             $('.modal-content form').prepend('<input id="edit" type="hidden" name="_method" value="patch">');
             $('.modal-content form').attr('action', '{{ url('/permissions/') }}/' +id);
-            
+
             $.ajax({
                 type: 'get',
                 url: '{{ url('/permissions/') }}/' +id,
@@ -165,10 +165,10 @@
             });
         });
 
-        $('#datatable').on('click', '.delete-permission', function(){
+        $('#datatable-permission').on('click', '.delete-permission', function(){
             let id = $(this).data('id');
 
-            $('.modal-title').html('Hapus Data Permission');
+            $('.modal-title').html('Eliminar Permisos');
             $('.modal-content form').attr('action', '{{ url('/permissions/') }}/' +id);
         });
 
@@ -176,5 +176,48 @@
             let key = event.keyCode;
             return ((key >= 65 && key <= 90) || key == 8 || key == 189);
         };
+
+        $(document).ready(function(){
+            $('#datatable-permission').DataTable({
+                responsive:true,
+                dom: 'Bfrtip',
+                language: { "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+                },
+
+                buttons: [
+                    {
+                        extend:    'copyHtml5',
+                        text:      '<i class="fa fa-copy"></i>',
+                        titleAttr: 'Copy',
+                        className: 'btn-secondary'
+                    },
+                    {
+                        extend:    'pdfHtml5',
+                        text:      '<i class="far fa-file-pdf"></i>',
+                        titleAttr: 'PDF',
+                        className: 'btn-danger'
+                    },
+                    {
+                        extend:    'excelHtml5',
+                        text:      '<i class="fa fa-file-excel"></i>',
+                        titleAttr: 'Excel',
+                        className: 'btn-success'
+                    },
+                    {
+                        extend:    'csvHtml5',
+                        text:      '<i class="fa fa-file-csv"></i>',
+                        titleAttr: 'CSV',
+                        className: 'btn-warning'
+                    },
+                    {
+                        extend:    'print',
+                        text:      '<i class="fa fa-print"></i>',
+                        titleAttr: 'Imprimir',
+                        className: 'btn-info'
+                    },
+
+                ]
+            })
+        });
     </script>
 @endsection

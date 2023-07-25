@@ -37,7 +37,7 @@ class RoleController extends Controller
      */
     public function create()
     {
-        $data['pageTitle'] = 'Tambah Data Role';
+        $data['pageTitle'] = 'Agregar datos de Roles';
         $data['permissions'] = Permission::all();
 
         return view('roles.create', $data);
@@ -57,8 +57,8 @@ class RoleController extends Controller
         ];
 
         $customMessages = [
-            'nama.required' => 'Nama belum diisi!',
-            'permissions.required' => 'Permissions belum dipilih!',
+            'nama.required' => 'Nombre es requerido',
+            'permissions.required' => 'Permiso es requerido',
         ];
 
         $this->validate($request, $rules, $customMessages);
@@ -66,7 +66,7 @@ class RoleController extends Controller
         $role = Role::create(['name' => $request->nama]);
         $role->syncPermissions($request->permissions);
 
-        return redirect('/roles')->with('message', 'Data telah ditambahkan');
+        return redirect('/roles')->with('message', 'Se han añadido datos correctamente.');
     }
 
     /**
@@ -88,7 +88,7 @@ class RoleController extends Controller
      */
     public function edit($id)
     {
-        $data['pageTitle'] = 'Ubah Data Role';
+        $data['pageTitle'] = 'Cambiar datos del Rol';
         $data['role'] = Role::find($id);
         $data['permissions'] = Permission::all();
         $data['rolePermissions'] = DB::table('role_has_permissions')->where('role_has_permissions.role_id', $id)
@@ -113,8 +113,8 @@ class RoleController extends Controller
         ];
 
         $customMessages = [
-            'nama.required' => 'Nama belum diisi!',
-            'permissions.required' => 'Permissions belum dipilih!',
+            'nama.required' => 'Nombre es requerido.',
+            'permissions.required' => 'Permiso es requerido.',
         ];
 
         $this->validate($request, $rules, $customMessages);
@@ -125,7 +125,7 @@ class RoleController extends Controller
 
         $role->syncPermissions($request->permissions);
 
-        return redirect('/roles')->with('message', 'Data telah diubah');
+        return redirect('/roles')->with('message', 'Los datos han sido actualizados correctamente.');
     }
 
     /**
@@ -138,6 +138,6 @@ class RoleController extends Controller
     {
         Role::destroy($id);
 
-        return redirect('/roles')->with('message', 'Data telah dihapus');
+        return redirect('/roles')->with('message', 'Los datos hansido eliminados.');
     }
 }

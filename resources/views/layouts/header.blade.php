@@ -8,15 +8,15 @@
                     <li class="dropdown">
                         <a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
                             <img alt="image" src="{{ asset('assets/img/avatar.png') }}" class="rounded-circle mr-1">
-                            <div class="d-sm-none d-lg-inline-block">Hai, {{ Auth::user()->name }}</div>
+                            <div class="d-sm-none d-lg-inline-block">Hola, {{ Auth::user()->name }}</div>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">
                             <a href="{{ url('/my-account') }}" class="dropdown-item has-icon">
-                                <i class="far fa-user"></i> Akun Saya
+                                <i class="far fa-user"></i> Mi cuenta
                             </a>
                             <div class="dropdown-divider"></div>
                             <a href="{{ route('logout') }}" class="dropdown-item has-icon text-danger" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                <i class="fas fa-sign-out-alt"></i> Keluar
+                                <i class="fas fa-sign-out-alt"></i> Salir
                             </a>
 
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

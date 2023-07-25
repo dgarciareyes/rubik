@@ -7,6 +7,8 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\ResetsPasswords;
 use Illuminate\Http\Request;
 
+
+
 class ResetPasswordController extends Controller
 {
     /*
@@ -51,13 +53,13 @@ class ResetPasswordController extends Controller
     protected function validationErrorMessages()
     {
         return [
-            'token.required' => 'Token kadaluarsa!',
-            'email.required' => 'Email belum diisi!',
-            'email.email' => 'Email tidak valid!',
-            'password.required' => 'Kata sandi belum diisi!',
-            'password.min' => 'Kata sandi minimal :min karakter!',
-            'password.regex' => 'Kata sandi harus mengandung huruf kapital, huruf kecil, dan angka!',
-            'password.confirmed' => 'Kata sandi tidak cocok!',
+            'token.required' => 'Token es requerido.',
+            'email.required' => 'Email es requerido',
+            'email.email' => 'Email no es válido.',
+            'password.required' => 'Contraseña es requerida.',
+            'password.min' => 'Contrasena debe tener un mínimo de :min caracteres.',
+            'password.regex' => '¡La contraseña debe contener letras mayúsculas, minúsculas y números!',
+            'password.confirmed' => 'Las contraseñas no coinciden.',
         ];
     }
 

@@ -11,7 +11,7 @@
             <h1>{{ $pageTitle }}</h1>
             <div class="section-header-breadcrumb">
                 <div class="breadcrumb-item"><a href="{{ url('/roles') }}">Roles</a></div>
-                <div class="breadcrumb-item active">Ubah Data Role</div>
+                <div class="breadcrumb-item active">Cambiar datos de rol</div>
             </div>
         </div>
 
@@ -31,14 +31,14 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4>Ubah Data Role</h4>
+                            <h4>Cambiar datos de rol</h4>
                         </div>
                         <div class="card-body">
                             <form method="POST" action="{{ url('/roles/' .$role->id) }}" class="needs-validation" novalidate="">
                                 @method('patch')
                                 @csrf
                                 <div class="form-group">
-                                    <label>Nama</label>
+                                    <label>Nombre</label>
                                     <input name="nama" type="text" class="form-control @error('nama') is-invalid @enderror" value="{{ old('nama', $role->name) }}">
                                     @error('nama')
                                         <div class="invalid-feedback">
@@ -66,7 +66,7 @@
                                     </div>
                                 </div>
                                 <div class="text-center">
-                                    <button type="submit" class="btn btn-icon icon-left btn-primary"><i class="fas fa-save"></i> Simpan</button>
+                                    <button type="submit" class="btn btn-icon icon-left btn-primary"><i class="fas fa-save"></i> Guardar</button>
                                 </div>
                             </form>
                         </div>
@@ -74,7 +74,7 @@
                 </div>
             </div>
         </div>
-    </section> 
+    </section>
 @endsection
 
 @section('script')

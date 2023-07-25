@@ -29,12 +29,12 @@
                         <form method="post" action="{{ url('/my-account') }}" class="needs-validation" novalidate="">
                             @csrf
                             <div class="card-header">
-                                <h4>Perbaharui Profil</h4>
+                                <h4>Actualización del perfil</h4>
                             </div>
                             <div class="card-body">
                                 <input type="hidden" name="id" value="{{ Auth::user()->id }}">
                                 <div class="form-group">
-                                    <label for="name">Nama</label>
+                                    <label for="name">Nombre</label>
                                     <input id="name" type="text" class="form-control" name="name" value="{{ old('name', Auth::user()->name) }}" autocomplete="name" autofocus>
                                     @error('name')
                                         <div class="invalid-feedback">
@@ -43,7 +43,7 @@
                                     @enderror
                                 </div>
                                 <div class="form-group">
-                                    <label for="username">Nama Pengguna</label>
+                                    <label for="username">Nombre de usuario</label>
                                     <input id="username" type="text" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username', Auth::user()->username) }}" autocomplete="username">
                                     @error('username')
                                         <div class="invalid-feedback">
@@ -51,7 +51,7 @@
                                         </div>
                                     @enderror
                                 </div>
-                
+
                                 <div class="form-group">
                                     <label for="email">Email</label>
                                     <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email', Auth::user()->email) }}" autocomplete="email">
@@ -62,7 +62,7 @@
                                     @enderror
                                 </div>
                                 <div class="card-footer text-center">
-                                    <button type="submit" class="btn btn-icon icon-left btn-primary"><i class="fas fa-save"></i> Simpan</button>
+                                    <button type="submit" class="btn btn-icon icon-left btn-primary"><i class="fas fa-save"></i> Guardar</button>
                                 </div>
                             </div>
                         </form>
@@ -74,12 +74,12 @@
                         <form method="post" action="{{ url('/my-account/update-password') }}" class="needs-validation" novalidate="">
                             @csrf
                             <div class="card-header">
-                                <h4>Ganti Kata Sandi</h4>
+                                <h4>Cambiar la contraseña</h4>
                             </div>
                             <div class="card-body">
                                 <input type="hidden" name="id" value="{{ Auth::user()->id }}">
                                 <div class="form-group">
-                                    <label for="current-password">Kata Sandi</label>
+                                    <label for="current-password">Contraseña</label>
                                     <input id="current-password" type="password" class="form-control @error('current_password') is-invalid @enderror" name="current_password" autofocus>
                                     @error('current_password')
                                         <div class="invalid-feedback">
@@ -88,7 +88,7 @@
                                     @enderror
                                 </div>
                                 <div class="form-group">
-                                    <label for="new-password" class="d-block">Kata Sandi Baru</label>
+                                    <label for="new-password" class="d-block">Nueva contraseña</label>
                                     <input id="new-password" type="password" class="form-control pwstrength @error('new_password') is-invalid @enderror" data-indicator="pwindicator" name="new_password">
                                     <div id="pwindicator" class="pwindicator">
                                         <div class="bar"></div>
@@ -101,7 +101,7 @@
                                     @enderror
                                 </div>
                                 <div class="form-group">
-                                    <label for="new-password-confirm" class="d-block">Konfirmasi Kata Sandi Baru</label>
+                                    <label for="new-password-confirm" class="d-block">confirmación de contraseña</label>
                                     <input id="new-password-confirm" type="password" class="form-control @error('new_password_confirmation') is-invalid @enderror" name="new_password_confirmation">
                                     @error('new_password_confirmation')
                                         <div class="invalid-feedback">
@@ -110,7 +110,7 @@
                                     @enderror
                                 </div>
                                 <div class="card-footer text-center">
-                                    <button type="submit" class="btn btn-icon icon-left btn-primary"><i class="fas fa-save"></i> Simpan</button>
+                                    <button type="submit" class="btn btn-icon icon-left btn-primary"><i class="fas fa-save"></i> Guardar</button>
                                 </div>
                             </div>
                         </form>

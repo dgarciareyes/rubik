@@ -18,7 +18,7 @@ class PermissionController extends Controller
 
     public function index()
     {
-        $data['pageTitle'] = 'Permissions';
+        $data['pageTitle'] = 'Permisos';
         $data['permissions'] = Permission::all();
 
         return view('permissions', $data);
@@ -28,13 +28,13 @@ class PermissionController extends Controller
     {
         Permission::create(['name' => Str::lower($request->nama)]);
 
-        return redirect('/permissions')->with('message', 'Data telah ditambahkan');
+        return redirect('/permissions')->with('message', 'Los datos han sido creados correctamente.');
     }
 
     public function edit($id)
     {
         $permission = Permission::find($id);
-        
+
         return response()->json([
             'permission' => $permission,
         ]);
@@ -46,7 +46,7 @@ class PermissionController extends Controller
         $permission->name = Str::lower($request->nama);
         $permission->save();
 
-        return redirect('/permissions')->with('message', 'Data telah diubah');
+        return redirect('/permissions')->with('message', 'Los datos han sido actualizados correctamente.');
     }
 
     public function destroy(Permission $permission)
@@ -54,6 +54,6 @@ class PermissionController extends Controller
         $permission = Permission::find($permission->id);
         $permission->delete();
 
-        return redirect('/permissions')->with('message', 'Data telah dihapus');
+        return redirect('/permissions')->with('message', 'Los datos han sido eliminados.');
     }
 }

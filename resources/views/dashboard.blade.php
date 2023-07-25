@@ -16,7 +16,7 @@
                     <button class="close" data-dismiss="alert">
                         <span>×</span>
                     </button>
-                    Kata sandi telah berhasil diatur ulang.
+                    La contraseña se ha restablecido con éxito.
                 </div>
             </div>
         @endif

@@ -7,11 +7,11 @@
         <div class="page-inner">
             <h1>503</h1>
             <div class="page-description">
-                Layanan tidak tersedia.
+                Servicio no disponible.
             </div>
             <div class="page-search">
                 <div class="mt-3">
-                    <a href="{{ url('/') }}">Kembali ke Dashboard</a>
+                    <a href="{{ url('/') }}">Volver al  Dashboard</a>
                 </div>
             </div>
         </div>

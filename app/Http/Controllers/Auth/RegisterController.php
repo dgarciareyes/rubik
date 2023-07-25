@@ -57,17 +57,17 @@ class RegisterController extends Controller
         ];
 
         $customMessages = [
-            'name.required' => 'Nama belum diisi!',
-            'email.required' => 'Email belum diisi!',
-            'email.email' => 'Email tidak valid!',
-            'email.unique' => 'Email telah digunakan!',
-            'username.required' => 'Nama pengguna belum diisi!',
-            'username.max' => 'Nama pengguna maksimal :max karakter!',
-            'username.unique' => 'Nama pengguna telah digunakan!',
-            'password.required' => 'Kata sandi belum diisi!',
-            'password.min' => 'Kata sandi minimal :min karakter!',
-            'password.regex' => 'Kata sandi harus mengandung huruf kapital, huruf kecil, dan angka!',
-            'password.confirmed' => 'Kata sandi tidak cocok!',
+            'name.required' => 'Nombre es requerido.',
+            'email.required' => 'Email es requerido',
+            'email.email' => 'Email no válido.',
+            'email.unique' => 'Email ya existe, escoja otro.',
+            'username.required' => 'Usuario es requerido',
+            'username.max' => 'Usuario debe contener un máximo de :max caracteres.',
+            'username.unique' => 'Usuario ya existe, escoja otro.',
+            'password.required' => 'Contraseña es requerida',
+            'password.min' => 'Contraseña debe contar con un mínimo de :min caracteres.',
+            'password.regex' => 'La contraseña debe contener letras mayúsculas, minúsculas y números.',
+            'password.confirmed' => 'Las contraseñas no coinciden',
         ];
 
         return Validator::make($data, $rules, $customMessages);

@@ -1,6 +1,6 @@
 @extends('layouts.auth')
 
-@section('pageTitle', 'Buat Akun')
+@section('pageTitle', 'Crear una cuenta')
 
 @section('style')
     <!-- CSS Libraries -->
@@ -8,13 +8,13 @@
 
 @section('content')
     <div class="card card-primary">
-        <div class="card-header"><h4>Buat Akun</h4></div>
+        <div class="card-header"><h4>Crear una cuenta</h4></div>
 
         <div class="card-body">
             <form method="POST" action="{{ route('register') }}" class="needs-validation" novalidate="">
-                @csrf                
+                @csrf
                 <div class="form-group">
-                    <label for="name">Nama</label>
+                    <label for="name">Nombre</label>
                     <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" autocomplete="name" autofocus>
                     @error('name')
                         <div class="invalid-feedback">
@@ -23,7 +23,7 @@
                     @enderror
                 </div>
                 <div class="form-group">
-                    <label for="username">Nama Pengguna</label>
+                    <label for="username">Usuario</label>
                     <input id="username" type="text" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" autocomplete="username">
                     @error('username')
                         <div class="invalid-feedback">
@@ -41,9 +41,9 @@
                         </div>
                     @enderror
                 </div>
-                
+
                 <div class="form-group">
-                    <label for="password" class="d-block">Kata Sandi</label>
+                    <label for="password" class="d-block">Contraseña</label>
                     <input id="password" type="password" class="form-control pwstrength @error('password') is-invalid @enderror" data-indicator="pwindicator" name="password" autocomplete="new-password">
                     <div id="pwindicator" class="pwindicator">
                         <div class="bar"></div>
@@ -56,12 +56,12 @@
                     @enderror
                 </div>
                 <div class="form-group">
-                    <label for="password-confirm" class="d-block">Konfirmasi Kata Sandi</label>
+                    <label for="password-confirm" class="d-block">Confirmar contraseña</label>
                     <input id="password-confirm" type="password" class="form-control" name="password_confirmation" autocomplete="new-password">
-                </div>                
+                </div>
 
                 <div class="form-group">
-                    <button type="submit" class="btn btn-primary btn-lg btn-block">Daftar</button>
+                    <button type="submit" class="btn btn-primary btn-lg btn-block">Listo</button>
                 </div>
             </form>
         </div>

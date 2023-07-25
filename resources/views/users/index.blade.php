@@ -37,25 +37,25 @@
                             @endcan
                         </div>
                         <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-striped" id="datatable">
+                            <div class=""">
+                                <table class="table table-striped table-bordered nowwrap" style="width:100%" id="datatable-user">
                                     <thead>
                                         <tr>
-                                            <th class="text-center">
+                                            <th class="text-left" style="width: 15px">
                                                 No.
                                             </th>
-                                            <th>Nama</th>
+                                            <th>Nombre</th>
                                             <th>Email</th>
-                                            <th>Nama Pengguna</th>
+                                            <th>Usuario</th>
                                             <th>Role</th>
-                                            <th>Aksi</th>
+                                            <th class="text-right" style="width: 75px">Acciones</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @php
                                             $no = 1
                                         @endphp
-                                        
+
                                         @foreach ($users as $user)
                                         <tr>
                                             <td class="text-center">{{ $no++ }}</td>
@@ -102,11 +102,11 @@
                     @method('delete')
                     @csrf
                     <div class="modal-body">
-                        <p>Apakah Anda yakin akan menghapus data ini?</p>
+                        <p>¿Está seguro de que desea eliminar estos datos?</p>
                     </div>
                     <div class="modal-footer bg-whitesmoke br">
-                        <button type="submit" class="btn btn-danger btn-shadow">Ya</button>
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                        <button type="submit" class="btn btn-danger btn-shadow">Si</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                     </div>
                 </form>
             </div>
@@ -124,10 +124,53 @@
     <!-- Page Specific JS File -->
     <script src="{{ asset('assets/js/page/modules-datatables.js') }}"></script>
     <script>
-        $('#datatable').on('click', '.delete-user', function(){
+         $(document).ready(function(){
+            $('#datatable-user').DataTable({
+                responsive:true,
+                dom: 'Bfrtip',
+                language: { "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+                },
+
+                buttons: [
+                    {
+                        extend:    'copyHtml5',
+                        text:      '<i class="fa fa-copy"></i>',
+                        titleAttr: 'Copy',
+                        className: 'btn-secondary'
+                    },
+                    {
+                        extend:    'pdfHtml5',
+                        text:      '<i class="far fa-file-pdf"></i>',
+                        titleAttr: 'PDF',
+                        className: 'btn-danger'
+                    },
+                    {
+                        extend:    'excelHtml5',
+                        text:      '<i class="fa fa-file-excel"></i>',
+                        titleAttr: 'Excel',
+                        className: 'btn-success'
+                    },
+                    {
+                        extend:    'csvHtml5',
+                        text:      '<i class="fa fa-file-csv"></i>',
+                        titleAttr: 'CSV',
+                        className: 'btn-warning'
+                    },
+                    {
+                        extend:    'print',
+                        text:      '<i class="fa fa-print"></i>',
+                        titleAttr: 'Imprimir',
+                        className: 'btn-info'
+                    },
+
+                ]
+            })
+        });
+
+        $('#datatable-user').on('click', '.delete-user', function(){
             let id = $(this).data('id');
 
-            $('.modal-title').html('Hapus Data user');
+            $('.modal-title').html('Eliminar datos del Usuario.');
             $('.modal-content form').attr('action', '{{ url('/users/') }}/' +id);
         });
     </script>

@@ -38,7 +38,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        $data['pageTitle'] = 'Tambah Data User';
+        $data['pageTitle'] = 'Agregar datos deL Usuario';
         $data['roles'] = Role::all();
 
         return view('users.create', $data);
@@ -61,14 +61,14 @@ class UserController extends Controller
         ];
 
         $customMessages = [
-            'name.required' => 'Nama belum diisi!',
-            'email.required' => 'Email belum diisi!',
-            'email.unique' => 'Email telah digunakan!',
-            'username.required' => 'Nama pengguna belum diisi!',
-            'username.unique' => 'Nama pengguna telah digunakan!',
-            'password.required' => 'Kata sandi belum diisi!',
-            'password.confirmed' => 'Kata sandi tidak cocok!',
-            'role.required' => 'Role belum diisi!',
+            'name.required' => 'Nombre requerido',
+            'email.required' => 'Email requerido',
+            'email.unique' => 'Email ya existe, escoja otro.',
+            'username.required' => 'Usuario es requerido',
+            'username.unique' => 'Usuario ya existe, escoja otro.',
+            'password.required' => 'Contraseña es requerida.',
+            'password.confirmed' => 'Las contraseñas no coiciden.',
+            'role.required' => 'Rol es requerido.',
         ];
 
         $this->validate($request, $rules, $customMessages);
@@ -81,7 +81,7 @@ class UserController extends Controller
         ]);
         $user->assignRole($request->role);
 
-        return redirect('/users')->with('message', 'Data telah ditambahkan');
+        return redirect('/users')->with('message', 'Los datos han sido agregados correctamente.');
     }
 
     /**
@@ -103,7 +103,7 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        $data['pageTitle'] = 'Ubah Data User';
+        $data['pageTitle'] = 'Cambiar datos del usuario';
         $data['user'] = $user;
         $data['roles'] = Role::all();
         $data['userRole'] = User::find($user->id)->roles->pluck('name','name')->all();
@@ -129,13 +129,13 @@ class UserController extends Controller
         ];
 
         $customMessages = [
-            'name.required' => 'Nama belum diisi!',
-            'email.required' => 'Email belum diisi!',
-            'email.unique' => 'Email telah digunakan!',
-            'username.required' => 'Nama pengguna belum diisi!',
-            'username.unique' => 'Nama pengguna telah digunakan!',
-            'password.confirmed' => 'Kata sandi tidak cocok!',
-            'role.required' => 'Role belum diisi!',
+            'name.required' => 'Nombre es requerido.',
+            'email.required' => 'Email es requerido',
+            'email.unique' => 'Email ya existe, escoja otro.',
+            'username.required' => 'Usuario es requerido.',
+            'username.unique' => 'Usuario ya existe, escoja otro.',
+            'password.confirmed' => 'Las Contraseñas no coiciden.',
+            'role.required' => 'Rol es requerido.',
         ];
 
         $this->validate($request, $rules, $customMessages);
@@ -151,7 +151,7 @@ class UserController extends Controller
                 ]);
             $user->assignRole($request->role);
 
-            return redirect('/users')->with('message', 'Data telah diubah');
+            return redirect('/users')->with('message', 'Los datos se han actulizado correctamente.');
         } else {
             DB::table('model_has_roles')->where('model_id', $user->id)->delete();
 
@@ -164,7 +164,7 @@ class UserController extends Controller
                 ]);
             $user->assignRole($request->role);
 
-            return redirect('/users')->with('message', 'Data telah diubah');
+            return redirect('/users')->with('message', 'Los datos se han actulizado correctamente.');
         }
     }
 
@@ -178,6 +178,6 @@ class UserController extends Controller
     {
         User::destroy($user->id);
 
-        return redirect('/users')->with('message', 'Data telah dihapus');
+        return redirect('/users')->with('message', 'Los datos han sido eliminados.');
     }
 }

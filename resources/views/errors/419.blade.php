@@ -7,11 +7,11 @@
         <div class="page-inner">
             <h1>419</h1>
             <div class="page-description">
-                Maaf, halaman kadaluarsa.
+                Lo sentimos, la página expiró.
             </div>
             <div class="page-search">
                 <div class="mt-3">
-                    <a href="{{ url('/') }}">Kembali ke Dashboard</a>
+                    <a href="{{ url('/') }}">Volver al Dashboard</a>
                 </div>
             </div>
         </div>

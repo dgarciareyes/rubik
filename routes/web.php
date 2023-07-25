@@ -5,6 +5,8 @@ use App\Http\Controllers\MyAccountController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\CompaniaController;
+use App\Http\Controllers\RamoController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -35,3 +37,5 @@ Route::resource('/users', UserController::class)->middleware('auth');
 Route::get('/my-account', [MyAccountController::class, 'show'])->middleware('auth');
 Route::post('/my-account', [MyAccountController::class, 'updateAccount'])->middleware('auth');
 Route::post('/my-account/update-password', [MyAccountController::class, 'updatePassword'])->middleware('auth');
+Route::resource('/companias', CompaniaController::class)->middleware('auth');
+Route::resource('/ramos', RamoController::class)->middleware('auth');

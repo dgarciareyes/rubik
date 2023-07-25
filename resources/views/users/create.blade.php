@@ -11,7 +11,7 @@
             <h1>{{ $pageTitle }}</h1>
             <div class="section-header-breadcrumb">
                 <div class="breadcrumb-item"><a href="{{ url('/users') }}">Users</a></div>
-                <div class="breadcrumb-item active">Tambah Data User</div>
+                <div class="breadcrumb-item active">Agregar datos de usuario</div>
             </div>
         </div>
 
@@ -32,13 +32,13 @@
                 <div class="col-12 col-md-8">
                     <div class="card">
                         <div class="card-header">
-                            <h4>Tambah Data User</h4>
+                            <h4>Agregar datos de usuario</h4>
                         </div>
                         <div class="card-body">
                             <form method="POST" action="{{ url('/users') }}" class="needs-validation" novalidate="">
                                 @csrf
                                 <div class="form-group">
-                                    <label>Nama</label>
+                                    <label>Nombre</label>
                                     <input name="name" type="text" class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}">
                                     @error('name')
                                         <div class="invalid-feedback">
@@ -63,7 +63,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label>Nama Pengguna</label>
+                                    <label>Nombre de usuario</label>
                                     <div class="input-group">
                                         <div class="input-group-prepend">
                                             <div class="input-group-text">
@@ -79,7 +79,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label>Kata Sandi</label>
+                                    <label>Contraseña</label>
                                     <div class="input-group">
                                         <div class="input-group-prepend">
                                             <div class="input-group-text">
@@ -99,7 +99,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label>Konfirmasi Kata Sandi</label>
+                                    <label>confirmar Contraseña</label>
                                     <div class="input-group">
                                         <div class="input-group-prepend">
                                             <div class="input-group-text">
@@ -112,7 +112,7 @@
                                 <div class="form-group">
                                     <label>Role</label>
                                     <select class="form-control selectric @error('role') is-invalid @enderror" name="role">
-                                        <option value=""> -- Pilih Role --</option>
+                                        <option value=""> -- Seleccionar Role --</option>
                                         @foreach ($roles as $role)
                                             <option value="{{ $role->name }}" {{ (collect(old('role'))->contains($role->name)) ? 'selected':'' }}>{{ $role->name }}</option>
                                         @endforeach
@@ -124,7 +124,7 @@
                                     @enderror
                                 </div>
                                 <div class="text-center">
-                                    <button type="submit" class="btn btn-icon icon-left btn-primary"><i class="fas fa-save"></i> Simpan</button>
+                                    <button type="submit" class="btn btn-icon icon-left btn-primary"><i class="fas fa-save"></i> Guardar</button>
                                 </div>
                             </form>
                         </div>
@@ -132,7 +132,7 @@
                 </div>
             </div>
         </div>
-    </section> 
+    </section>
 @endsection
 
 @section('script')

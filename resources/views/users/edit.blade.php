@@ -11,7 +11,7 @@
             <h1>{{ $pageTitle }}</h1>
             <div class="section-header-breadcrumb">
                 <div class="breadcrumb-item"><a href="{{ url('/users') }}">Users</a></div>
-                <div class="breadcrumb-item active">Ubah Data User</div>
+                <div class="breadcrumb-item active">Cambiar datos de usuario</div>
             </div>
         </div>
 
@@ -32,14 +32,14 @@
                 <div class="col-12 col-md-8">
                     <div class="card">
                         <div class="card-header">
-                            <h4>Ubah Data User</h4>
+                            <h4>Cambiar datos de usuario</h4>
                         </div>
                         <div class="card-body">
                             <form method="POST" action="{{ url('/users/' .$user->id) }}" class="needs-validation" novalidate="">
                                 @method('patch')
                                 @csrf
                                 <div class="form-group">
-                                    <label>Nama</label>
+                                    <label>Nombre</label>
                                     <input name="name" type="text" class="form-control @error('name') is-invalid @enderror" value="{{ old('name', $user->name) }}">
                                     @error('name')
                                         <div class="invalid-feedback">
@@ -64,7 +64,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label>Nama Pengguna</label>
+                                    <label>Usuario</label>
                                     <div class="input-group">
                                         <div class="input-group-prepend">
                                             <div class="input-group-text">
@@ -80,7 +80,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label>Kata Sandi Baru</label>
+                                    <label>Nueva contraseña</label>
                                     <div class="input-group">
                                         <div class="input-group-prepend">
                                             <div class="input-group-text">
@@ -100,7 +100,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label>Konfirmasi Kata Sandi</label>
+                                    <label>confirmar Contraseña</label>
                                     <div class="input-group">
                                         <div class="input-group-prepend">
                                             <div class="input-group-text">
@@ -113,7 +113,7 @@
                                 <div class="form-group">
                                     <label>Role</label>
                                     <select class="form-control selectric @error('role') is-invalid @enderror" name="role">
-                                        <option value=""> -- Pilih Role --</option>
+                                        <option value=""> -- Seleccione Role --</option>
                                         @foreach ($roles as $role)
                                             <option value="{{ $role->name }}" {{ in_array($role->name, $userRole) ? 'selected' : '' }} {{ (collect(old('role'))->contains($role->name)) ? 'selected':'' }}>{{ $role->name }}</option>
                                         @endforeach
@@ -125,7 +125,7 @@
                                     @enderror
                                 </div>
                                 <div class="text-center">
-                                    <button type="submit" class="btn btn-icon icon-left btn-primary"><i class="fas fa-save"></i> Simpan</button>
+                                    <button type="submit" class="btn btn-icon icon-left btn-primary"><i class="fas fa-save"></i> Guardar</button>
                                 </div>
                             </form>
                         </div>
@@ -133,7 +133,7 @@
                 </div>
             </div>
         </div>
-    </section> 
+    </section>
 @endsection
 
 @section('script')

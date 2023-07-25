@@ -11,7 +11,7 @@ class MyAccountController extends Controller
 {
     public function show()
     {
-        $data['pageTitle'] = 'Akun Saya';
+        $data['pageTitle'] = 'Mi cuenta';
 
         return view('my_account', $data);
     }
@@ -25,11 +25,11 @@ class MyAccountController extends Controller
         ];
 
         $customMessages = [
-            'name.required' => 'Nama belum diisi!',
-            'email.required' => 'Email belum diisi!',
-            'email.unique' => 'Email telah digunakan!',
-            'username.required' => 'Nama pengguna belum diisi!',
-            'username.unique' => 'Nama pengguna telah digunakan!',
+            'name.required' => 'Nombre es requerido',
+            'email.required' => 'Email es requerido',
+            'email.unique' => 'Email ya existe, escoja otro.',
+            'username.required' => 'Usuario es requerido.',
+            'username.unique' => 'Usuario ya existe, escoja otro.',
         ];
 
         $this->validate($request, $rules, $customMessages);
@@ -41,7 +41,7 @@ class MyAccountController extends Controller
                 'username' => $request->username
             ]);
 
-        return redirect('/my-account')->with('message', 'Data telah diperbaharui');
+        return redirect('/my-account')->with('message', 'Los datos han sido actulizados correctamente.');
     }
 
     public function updatePassword(Request $request)
@@ -53,11 +53,11 @@ class MyAccountController extends Controller
         ];
 
         $customMessages = [
-            'current_password.required' => 'Kata sandi lama belum diisi!',
-            'new_password.required' => 'Kata sandi baru belum diisi!',
-            'new_password.min' => 'Kata sandi minimal :min karakter!',
-            'new_password.regex' => 'Kata sandi harus mengandung huruf kapital, huruf kecil, dan angka!',
-            'new_password_confirmation.same' => 'Kata sandi tidak cocok!',
+            'current_password.required' => 'Contraseña antigua es requerida.',
+            'new_password.required' => 'Nueva cotraseña es requerida',
+            'new_password.min' => 'Contraseña debe contar con un mínimo de :min catacteres.',
+            'new_password.regex' => 'La contraseña debe contener letras mayúsculas, minúsculas y números.',
+            'new_password_confirmation.same' => 'Las contaseñas no coinciden.',
         ];
 
         $this->validate($request, $rules, $customMessages);
@@ -67,6 +67,6 @@ class MyAccountController extends Controller
             'password' => Hash::make($request->new_password)
         ]);
 
-        return redirect('/my-account')->with('message', 'Kata sandi telah diperbaharui');
+        return redirect('/my-account')->with('message', 'La contraseña ha sido actualizada correctamente.');
     }
 }

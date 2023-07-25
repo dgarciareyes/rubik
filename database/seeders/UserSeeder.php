@@ -17,10 +17,10 @@ class UserSeeder extends Seeder
     {
         DB::table('users')->insert([
             'name' => 'Admin',
-            'email' => 'admin@laravel-starter.test',
+            'email' => 'admin@admin.com',
             'username' => 'admin',
             'email_verified_at' => now(),
-            'password' => Hash::make('admin'),            
+            'password' => Hash::make('admin'),
             'created_at' => now(),
             'updated_at' => now(),
         ]);
